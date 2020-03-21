@@ -151,8 +151,8 @@ async function makeProfile(event){
   $("#loader").show();
 
   // disable submit and cancel buttons
-  document.querySelector('#cancel-btn').setAttribute('disabled', true);
-  document.querySelector('#add-profile').setAttribute('disabled', true);
+  document.querySelector('#cancel-btn').setAttribute('disabled', 'disabled');
+  document.querySelector('#add-profile').setAttribute('disabled', 'disabled');
 
 
   let name=document.getElementById("name").value;
@@ -179,7 +179,7 @@ async function bookAppointment(event){
   $("#loader").show();
 
   // disable submit button
-  document.querySelector('#book-appointment').setAttribute('disabled', true);
+  document.querySelector('#book-appointment').setAttribute('disabled', 'disabled');
 
   let date=document.getElementById("date").value;
   let services=document.getElementById("services").value;
@@ -193,10 +193,24 @@ async function bookAppointment(event){
 
       // enable submit button
       document.querySelector('#book-appointment').removeAttribute('disabled');
+
+      // clear appointment entries
+      document.getElementById("date").value = '';
+      document.getElementById("services").value = '';
+      // hide loader
       $("#loader").hide();
     })
     .then(function(){
       appointmentsDom(id,date,services)
+
+      // enable submit button
+      document.querySelector('#book-appointment').removeAttribute('disabled');
+
+      // clear appointment entries
+      document.getElementById("date").value = '';
+      document.getElementById("services").value = '';
+      // hide loader
+      $("#loader").hide();
     });
   }
 }
