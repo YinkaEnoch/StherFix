@@ -201,7 +201,7 @@ async function bookAppointment(event){
       $("#loader").hide();
     })
     .then(function(){
-      appointmentsDom(id,date,services)
+      appointmentsDom(id,date,services);
 
       // enable submit button
       document.querySelector('#book-appointment').removeAttribute('disabled');

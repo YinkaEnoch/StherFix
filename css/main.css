@@ -115,11 +115,12 @@ nav{
 
 #loader {
   position: fixed;
-  top: 20%;
+  top:0;
   left: 0;
-  height: 50px;
+  height: 100%;
   width:100%;
-  z-index: 1;
+  z-index: 100;
+  background: rgba(0,0,0,.5);
 }
 
 .loader,
@@ -135,11 +136,11 @@ nav{
   color: paleturquoise;
   text-indent: -9999em;
   margin: 88px auto;
-  position: relative;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
   font-size: 11px;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
 }
