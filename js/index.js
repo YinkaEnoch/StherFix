@@ -206,6 +206,12 @@ async function bookAppointment(event){
       // enable submit button
       document.querySelector('#book-appointment').removeAttribute('disabled');
 
+      // update number of appointments
+      let currCount = document.querySelector('#appointment-amount').textContent;
+      currCount = currCount.split('').filter(item => !isNaN(parseInt(item))).join('');
+      let newCount = parseInt(currCount) + 1;
+      document.querySelector('#appointment-amount').innerHTML = "(" + newCount + ")";
+      
       // clear appointment entries
       document.getElementById("date").value = '';
       document.getElementById("services").value = '';
