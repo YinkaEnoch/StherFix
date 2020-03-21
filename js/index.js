@@ -150,6 +150,11 @@ async function makeProfile(event){
   event.preventDefault();
   $("#loader").show();
 
+  // disable submit and cancel buttons
+  document.querySelector('#cancel-btn').setAttribute('disabled', true);
+  document.querySelector('#add-profile').setAttribute('disabled', true);
+
+
   let name=document.getElementById("name").value;
   let email=document.getElementById("email").value;
   let mobile=document.getElementById("mobile").value;
@@ -160,6 +165,10 @@ async function makeProfile(event){
     })
   }
 
+  // enable submit and cancel buttons
+  document.querySelector('#cancel-btn').removeAttribute('disabled');
+  document.querySelector('#add-profile').removeAttribute('disabled');
+
   $("#loader").hide();
 }
 
@@ -168,6 +177,9 @@ document.getElementById("add-profile").addEventListener("click",makeProfile);
 async function bookAppointment(event){
   event.preventDefault();
   $("#loader").show();
+
+  // disable submit button
+  document.querySelector('#book-appointment').setAttribute('disabled', true);
 
   let date=document.getElementById("date").value;
   let services=document.getElementById("services").value;
@@ -179,6 +191,8 @@ async function bookAppointment(event){
       console.log("Error:", error)
       document.getElementById("error-message").innerHTML = "<div class='alert alert-warning'><strong>Error!</strong> <a data-toggle='modal' data-target='#profile-model' class='alert-link'>Create a profile</a> to add appointment.</div>";
 
+      // enable submit button
+      document.querySelector('#book-appointment').removeAttribute('disabled');
       $("#loader").hide();
     })
     .then(function(){
