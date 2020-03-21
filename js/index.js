@@ -138,7 +138,10 @@ window.addEventListener('load',async function(){
     }
     $("#loader").hide();
   }).catch(function(){
-    document.getElementById("admin-statictics").innerHTML = "<p class='text-danger'>Not Authorized to see content</p>";
+    // hide statistics link in nav
+    document.getElementById("statistics").style.display = 'none';
+    // hide statistics link
+    document.querySelector('.nav-item:last-child').style.display = 'none';
     $("#loader").hide();
   });
 });
